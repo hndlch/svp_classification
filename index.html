@@ -50,7 +50,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p> This project focuses on understanding and optimizing model behavior for protein particle classification through systematic experimentation. Instead of treating performance as a single numeric outcome, we emphasize comparative trends across training configurations and particle classes to better understand how model decisions emerge.
+          <p> This project focuses on understanding and optimizing model behavior for protein particle classification through systematic experimentation. Instead of treating performance as a single numeric outcome, we emphasize comparative trends across training configurations and particle classes to better understand how model decisions emerge. </p>
         </div>
       </div>
     </div>
@@ -60,7 +60,6 @@
 <section class="section">
   <div class="container is-max-desktop">
 <h2 class="title is-3 has-text-centered">Model and Training</h2>
-      <p>
 
 
     <!-- Model & Training -->
@@ -174,33 +173,69 @@
 
     <div style="margin-top: 4.0rem;"></div>
 
-    <div class="content has-text-justified readable-content">
-      <h4 class="title is-5">Section B</h4>
+    <div style="margin-top: 4.0rem;"></div>
 
-      <div style="margin-top: 1.5rem;"></div>
+<div class="content has-text-justified readable-content">
+  <h4 class="title is-4 has-text-centered">Section B: Factors Influencing FIM Classification &amp; Particle Insights</h4>
 
-      <p>
-        This section is reserved for additional analysis and interpretation.
-        Future content may include deeper qualitative observations,
-        comparative visual examples, or extended discussion on failure modes
-        and class-specific sensitivities.
-      </p>
-    </div>
+  <div style="margin-top: 1.5rem;"></div>
 
-  
-    <div style="margin-top: 2.5rem;"></div>
+  <h5 class="title is-5">1. Augmentation Sensitivity-Robustness Profiling</h5>
+  <p>
+    We evaluated classification stability across 10 mAb categories using seven image transformations.
+    The <strong>Net Score</strong> (Fig. B1) quantifies this stability: positive values indicate robustness (insensitivity),
+    while negative values indicate sensitivity to specific factors.
+    Notably, the Top 3 robust classes (<strong>mAb1, mAb3, mAb5</strong>) achieved an average True Positive Rate (Recall) of <strong>0.83</strong>,
+    proving that the model extracts highly reliable features even under varied perturbations.
+  </p>
 
-    <div class="content has-text-justified">
-      <h4 class="title is-5">Section B Observation</h4>
+  <div style="margin-top: 2.0rem;"></div>
 
-      <div style="margin-top: 1.5rem;"></div>
+  <h5 class="title is-5">2. Particle Insights</h5>
+  <p>
+    Based on the Net Scores and sensitivity patterns, we categorized the particles to infer their physical characteristics:
+  </p>
 
-      <p>
-        Detailed observations related to Section B will be documented here.
-        This space is intentionally structured to allow seamless expansion
-        without disrupting the overall narrative or layout of the page.
-      </p>
-    </div>
+  <ul>
+    <li>
+      <strong>Group 1: Shape-Dominant (Robust)</strong><br>
+      <strong>mAb3</strong> (Net +6) and <strong>mAb5</strong> (Net +2) are the most stable, maintaining identity regardless of visual changes.
+      This suggests a "shape-dominant" population with rigid morphological signatures where the structural outline serves as the primary,
+      noise-immune classification cue.
+    </li>
+
+    <li style="margin-top: 1rem;">
+      <strong>Group 2: Texture-Sensitive</strong><br>
+      <strong>mAb1</strong> (Net +1) is robust against Sharpness and Background shifts but sensitive to Luminance.
+      While its outer boundary is clear, the model relies heavily on internal optical density (contrast) for identification,
+      indicating that internal texture is as vital as global shape.
+    </li>
+
+    <li style="margin-top: 1rem;">
+      <strong>Group 3: Context &amp; Scale Dependent</strong><br>
+      <strong>mAb7</strong> (Net -1), <strong>mAb8</strong> (Net -2), and <strong>mAb10</strong> (Net -2) exhibit "Directional and Scale dependency."
+      Sensitivity to Flip and Size suggests the model uses orientation or specific size distributions as shortcuts,
+      implying a lack of scale/rotation-invariant features.
+    </li>
+
+    <li style="margin-top: 1rem;">
+      <strong>Group 4: Heterogeneous &amp; Fragile (Sensitive)</strong><br>
+      <strong>mAb4</strong> (Net -6), <strong>mAb6</strong> (Net -5), and <strong>mAb9</strong> (Net -5) show extreme vulnerability across nearly all factors.
+      This indicates high heterogeneity; these particles lack defining structural features and likely represent unstable aggregates with irregular boundaries
+      and diverse internal patterns.
+    </li>
+  </ul>
+
+  <div style="margin-top: 2.0rem;"></div>
+
+  <h5 class="title is-5">3. Conclusion</h5>
+  <p>
+    The analysis reveals that while the model achieves high reliability for particles with distinct morphological "fingerprints"
+    (<strong>mAb1, 3, 5</strong>), it remains vulnerable to Flip and Luminance transformations in less distinct categories.
+    This systematic profiling serves as a framework for identifying which physical attributes—shape, texture, or scale—are most critical
+    for automated FIM-based protein aggregate identification.
+  </p>
+</div>
 
   </div>
 </section>
