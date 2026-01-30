@@ -129,106 +129,152 @@
 </section>
 
 
-    <div style="margin-top: 4.0rem;"></div>
+<!-- ===================== FACTORS (AUG + INSIGHTS) ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-2 has-text-centered section-title">Factors Influencing FIM Classification</h2>
 
-    <div style="margin-top: 4.0rem;"></div>
+    <div class="box section-box">
 
-<div class="content has-text-justified readable-content">
-  <h4 class="title is-4 has-text-centered">Factors Influencing FIM Classification &amp; Particle Insights</h4>
+      <!-- Augmentation -->
+      <h3 class="title is-4 has-text-centered subblock-title">Augmentation Sensitivity–Robustness</h3>
 
-  <div style="margin-top: 1.5rem;"></div>
+      <div class="content has-text-justified readable-content">
+        <p>
+          We profile robustness across ten mAb categories under seven controlled transformations.
+          The <strong>Net Score</strong> summarizes stability: positive values indicate robustness (insensitivity), while negative values indicate sensitivity to specific perturbations.
+        </p>
+        <p>
+          The top robust classes (<strong>mAb1, mAb3, mAb5</strong>) maintain high recall even under perturbations, implying that the model extracts reliable cues for these particles.
+          In contrast, sensitive classes show performance drops that reveal which visual factors (e.g., luminance, orientation, scale) the model depends on.
+        </p>
 
-  <h5 class="title is-5">Augmentation Sensitivity-Robustness Profiling</h5>
-  <p>
-    We evaluated classification stability across 10 mAb categories using seven image transformations.
-    The <strong>Net Score</strong> (Fig. B1) quantifies this stability: positive values indicate robustness (insensitivity),
-    while negative values indicate sensitivity to specific factors.
-    Notably, the Top 3 robust classes (<strong>mAb1, mAb3, mAb5</strong>) achieved an average True Positive Rate (Recall) of <strong>0.83</strong>,
-    proving that the model extracts highly reliable features even under varied perturbations.
-  </p>
+        <div style="margin-top: 2.0rem;"></div>
 
-  <div style="margin-top: 2.0rem;"></div>
+        <div class="columns is-centered">
+          <div class="column is-10 has-text-centered">
+            <figure class="image">
+              <img src="./static/images/augprofile.png"
+                   alt="Augmentation sensitivity-robustness profiles"
+                   style="width: 100%; max-width: none; height: auto; border-radius: 8px;">
+              <figcaption class="figure-caption">
+                <span class="caption-label">Figure 2.</span>
+                Augmentation sensitivity–robustness profiles (positive = robust, negative = sensitive).
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
 
-<div class="columns is-centered">
-  <div class="column is-10 has-text-centered">
-    <figure class="image">
-      <img src="./static/images/augprofile.png"
-           style="width: 100%; max-width: none; height: auto; border-radius: 8px;">
-      <figcaption class="is-size-6 has-text-grey" style="margin-top: 0.75rem;">
-        Figure 2. Augmentation sensitivity–robustness profiles (positive = robust, negative = sensitive).
-      </figcaption>
-    </figure>
+      <hr class="soft-divider">
+
+      <!-- Insights -->
+      <h3 class="title is-4 has-text-centered subblock-title">Particle Insights</h3>
+
+      <div class="content readable-content">
+        <p class="has-text-justified">
+          Based on Net Scores and sensitivity patterns, we group particles by the type of visual evidence the model appears to rely on.
+          This provides an interpretable mapping from model behavior to plausible particle attributes (shape, texture, scale/context, heterogeneity).
+        </p>
+
+        <div class="table-container">
+          <table class="table is-fullwidth is-striped is-hoverable insights-table">
+            <thead>
+              <tr>
+                <th style="width: 18%;">Group</th>
+                <th style="width: 20%;">Label</th>
+                <th style="width: 18%;">mAbs</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Group 1</strong></td>
+                <td>Shape-Dominant (Robust)</td>
+                <td><strong>mAb3</strong> (+6), <strong>mAb5</strong> (+2)</td>
+                <td>
+                  Most stable across factors. Suggests rigid morphological signatures where outline/shape dominates and remains noise-immune.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Group 2</strong></td>
+                <td>Texture-Sensitive</td>
+                <td><strong>mAb1</strong> (+1)</td>
+                <td>
+                  Robust to Sharpness/Background but sensitive to Luminance.
+                  The model likely relies on internal optical density/contrast in addition to boundary cues.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Group 3</strong></td>
+                <td>Context &amp; Scale Dependent</td>
+                <td><strong>mAb7</strong> (-1), <strong>mAb8</strong> (-2), <strong>mAb10</strong> (-2)</td>
+                <td>
+                  Sensitivity to Flip/Size implies shortcuts based on orientation or size distribution,
+                  suggesting weaker rotation/scale-invariant representations.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Group 4</strong></td>
+                <td>Heterogeneous &amp; Fragile (Sensitive)</td>
+                <td><strong>mAb4</strong> (-6), <strong>mAb6</strong> (-5), <strong>mAb9</strong> (-5)</td>
+                <td>
+                  Vulnerable across many factors. Indicates high heterogeneity and lack of defining structural features;
+                  likely irregular aggregates with diverse internal patterns.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
   </div>
-</div>
+</section>
 
 
-  
-  <h5 class="title is-5">Particle Insights</h5>
-  <p>
-    Based on the Net Scores and sensitivity patterns, we categorized the particles to infer their physical characteristics:
-  </p>
+<!-- ===================== CONCLUSION ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-2 has-text-centered section-title">Conclusion</h2>
 
-  <ul>
-    <li>
-      <strong>Group 1: Shape-Dominant (Robust)</strong><br>
-      <strong>mAb3</strong> (Net +6) and <strong>mAb5</strong> (Net +2) are the most stable, maintaining identity regardless of visual changes.
-      This suggests a "shape-dominant" population with rigid morphological signatures where the structural outline serves as the primary,
-      noise-immune classification cue.
-    </li>
-
-    <li style="margin-top: 1rem;">
-      <strong>Group 2: Texture-Sensitive</strong><br>
-      <strong>mAb1</strong> (Net +1) is robust against Sharpness and Background shifts but sensitive to Luminance.
-      While its outer boundary is clear, the model relies heavily on internal optical density (contrast) for identification,
-      indicating that internal texture is as vital as global shape.
-    </li>
-
-    <li style="margin-top: 1rem;">
-      <strong>Group 3: Context &amp; Scale Dependent</strong><br>
-      <strong>mAb7</strong> (Net -1), <strong>mAb8</strong> (Net -2), and <strong>mAb10</strong> (Net -2) exhibit "Directional and Scale dependency."
-      Sensitivity to Flip and Size suggests the model uses orientation or specific size distributions as shortcuts,
-      implying a lack of scale/rotation-invariant features.
-    </li>
-
-    <li style="margin-top: 1rem;">
-      <strong>Group 4: Heterogeneous &amp; Fragile (Sensitive)</strong><br>
-      <strong>mAb4</strong> (Net -6), <strong>mAb6</strong> (Net -5), and <strong>mAb9</strong> (Net -5) show extreme vulnerability across nearly all factors.
-      This indicates high heterogeneity; these particles lack defining structural features and likely represent unstable aggregates with irregular boundaries
-      and diverse internal patterns.
-    </li>
-  </ul>
-
-  <div style="margin-top: 2.0rem;"></div>
-
-  <h5 class="title is-5">Conclusion</h5>
-  <p>
-    The analysis reveals that while the model achieves high reliability for particles with distinct morphological "fingerprints"
-    (<strong>mAb1, 3, 5</strong>), it remains vulnerable to Flip and Luminance transformations in less distinct categories.
-    This systematic profiling serves as a framework for identifying which physical attributes—shape, texture, or scale—are most critical
-    for automated FIM-based protein aggregate identification.
-  </p>
-</div>
+    <div class="content has-text-justified">
+      <p>
+        Our results show that robustness is strongly class-dependent in FIM protein particle classification.
+        Particles with distinct morphological “fingerprints” remain stable across perturbations, while ambiguous or heterogeneous classes are vulnerable to changes in luminance, orientation, or scale.
+      </p>
+      <p>
+        This profiling framework helps identify which visual attributes the model uses—and where it fails—so future improvements can target specific confusions and design augmentations that strengthen invariances rather than shortcuts.
+      </p>
+    </div>
 
   </div>
 </section>
 
 
-  <section class="section">
+<!-- ===================== REFERENCES ===================== -->
+<section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">References and Data Sources</h2>
+    <h2 class="title is-2 has-text-centered section-title">References and Data Sources</h2>
+
     <div class="content has-text-justified">
-  <p>  
-    1. Black, Joe; Doe, Jane; and Lee, Maria. “Template Paper Title on Data Analysis.” <em>Journal of Data Analysis & Visualization</em> 30, no. 1 (2023): 100-120.  
-  </p>
-  <p>  
-    2. White, Chris; Green, Anna; and Kim, Sam. “Template Methods for Interactive Dashboards.” <em>International Journal of Interactive Visualization</em> 25, no. 2 (2022): 210-234.  
-  </p>
-  <p>  
-    3. Miller, Pat; Gomez, Sofia; and Zhang, Lin. “Template Techniques for Labels & Annotation in Multidimensional Graphs.” <em>Computational Graphics & Data Systems</em> 12, no. 3 (2024): 45-70.  
-  </p>
-  <p>  
-    4. Wright, Ben; Park, Soo; and O’Neil, Pat. “Template Approaches to Temporal Flow Visualization.” <em>Decision Support & Data Analytics</em> 14, no. 3 (2021): 300-320.  
-  </p>
+      <p>
+        1. Black, Joe; Doe, Jane; and Lee, Maria. “Template Paper Title on Data Analysis.”
+        <em>Journal of Data Analysis &amp; Visualization</em> 30, no. 1 (2023): 100-120.
+      </p>
+      <p>
+        2. White, Chris; Green, Anna; and Kim, Sam. “Template Methods for Interactive Dashboards.”
+        <em>International Journal of Interactive Visualization</em> 25, no. 2 (2022): 210-234.
+      </p>
+      <p>
+        3. Miller, Pat; Gomez, Sofia; and Zhang, Lin. “Template Techniques for Labels &amp; Annotation in Multidimensional Graphs.”
+        <em>Computational Graphics &amp; Data Systems</em> 12, no. 3 (2024): 45-70.
+      </p>
+      <p>
+        4. Wright, Ben; Park, Soo; and O’Neil, Pat. “Template Approaches to Temporal Flow Visualization.”
+        <em>Decision Support &amp; Data Analytics</em> 14, no. 3 (2021): 300-320.
+      </p>
     </div>
   </div>
 </section>
@@ -238,20 +284,27 @@
   <div class="container">
     <div class="content has-text-centered">
       <p>
-       This website was created as coursework for <strong>CDS 301 / 501: Scientific Information and Data Visualization (Fall 2025) at George Mason Korea</strong>.
+        This website was created as coursework for <strong>CDS 301 / 501: Scientific Information and Data Visualization (Fall 2025) at George Mason Korea</strong>.
       </p>
       <p>
-        This website is licensed under a <a rel="license"
-        href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        This website is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+          Creative Commons Attribution-ShareAlike 4.0 International License
+        </a>.
       </p>
       <p>
-        Template design is based on the example site available at <a href="https://utkuozbulak.github.io/cds_301_template_website/" target="_blank" rel="noopener">CDS 301 Template Website</a>, which itself uses a layout from the <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">Nerfies project site</a>.
+        Template design is based on the example site available at
+        <a href="https://utkuozbulak.github.io/cds_301_template_website/" target="_blank" rel="noopener">
+          CDS 301 Template Website
+        </a>,
+        which itself uses a layout from the
+        <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">
+          Nerfies project site
+        </a>.
       </p>
     </div>
   </div>
 </footer>
 
-
 </body>
 </html>
-
