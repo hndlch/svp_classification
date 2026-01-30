@@ -244,62 +244,21 @@ figcaption {
   margin-top: 1rem;
 }
 
-/* ================= Footer: strong typographic hierarchy ================= */
-
-.custom-footer {
-  padding: 3.2rem 1.5rem;
-  background-color: #f6f7f9;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-/* 1. Project title */
-.footer-title {
-  font-family: "Google Sans", "Noto Sans", sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.35rem;
-}
-
-/* 2. Tagline (Model training …) */
-.footer-tagline {
-  font-family: "Google Sans", "Noto Sans", sans-serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  font-style: italic;              /* 핵심 */
-  color: rgba(0, 0, 0, 0.6);
-  max-width: 720px;
-  margin: 0 auto 1.6rem;
-  line-height: 1.45;
-}
-
-/* 3. Affiliation block */
-.footer-affiliation {
-  font-family: "Castoro", serif;   /* 🔥 서체 분리 */
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 1.4rem;
-}
-
-.affil-main {
-  font-weight: 700;
-  font-style: normal;
-}
-
-.affil-sub {
-  font-weight: 400;
-  font-style: italic;
-}
-
-/* 4. Template credit */
+/* Template credit */
 .footer-credit {
-  font-family: "Google Sans", "Noto Sans", sans-serif;
-  font-size: 0.78rem;
+  margin-top: 1.6rem;              /* ⬅ 위와 확실히 간격 */
+  font-size: 0.8rem;
+  line-height: 1.6;                /* ⬅ 줄 간격 */
   color: rgba(0, 0, 0, 0.45);
 }
 
+/* 링크는 파란색 유지 */
 .footer-credit a {
-  color: rgba(0, 0, 0, 0.45);
-  text-decoration: underli
+  color: #3273dc;                  /* Bulma 기본 파랑 */
+  text-decoration: underline;
+  margin: 0 0.15rem;               /* ⬅ 링크 앞뒤 숨 쉬게 */
+}
 
+.footer-credit a:hover {
+  color: #2759a5;                  /* hover 시 살짝 진하게 */
+}
