@@ -244,58 +244,62 @@ figcaption {
   margin-top: 1rem;
 }
 
-/* ================= Footer styling (stronger) ================= */
+/* ================= Footer: strong typographic hierarchy ================= */
 
 .custom-footer {
-  padding: 3rem 1.5rem !important;
-  background-color: #f4f5f7 !important;  /* 더 확실한 연회색 */
-  border-top: 1px solid rgba(10, 10, 10, 0.12);
+  padding: 3.2rem 1.5rem;
+  background-color: #f6f7f9;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.custom-footer .content {
-  max-width: 780px;
-  margin: 0 auto;
-}
-
+/* 1. Project title */
 .footer-title {
-  font-size: 1.15rem;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
 }
 
-.footer-subtitle {
+/* 2. Tagline (Model training …) */
+.footer-tagline {
+  font-family: "Google Sans", "Noto Sans", sans-serif;
   font-size: 0.95rem;
-  line-height: 1.5;
-  color: rgba(10, 10, 10, 0.65);
+  font-weight: 400;
+  font-style: italic;              /* 핵심 */
+  color: rgba(0, 0, 0, 0.6);
+  max-width: 720px;
+  margin: 0 auto 1.6rem;
+  line-height: 1.45;
+}
+
+/* 3. Affiliation block */
+.footer-affiliation {
+  font-family: "Castoro", serif;   /* 🔥 서체 분리 */
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.8);
   margin-bottom: 1.4rem;
 }
 
-.footer-divider {
-  width: 80px;
-  height: 3px;
-  background-color: rgba(10, 10, 10, 0.25);
-  margin: 1.5rem auto;
-  border-radius: 3px;
+.affil-main {
+  font-weight: 700;
+  font-style: normal;
 }
 
-.footer-affiliation {
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: rgba(10, 10, 10, 0.85);
-  margin-bottom: 1.2rem;
+.affil-sub {
+  font-weight: 400;
+  font-style: italic;
 }
 
+/* 4. Template credit */
 .footer-credit {
-  font-size: 0.8rem;
-  color: rgba(10, 10, 10, 0.55);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 0.78rem;
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .footer-credit a {
-  color: rgba(10, 10, 10, 0.6);
-  text-decoration: underline;
-}
-
-.footer-credit a:hover {
-  color: rgba(10, 10, 10, 0.85);
-}
+  color: rgba(0, 0, 0, 0.45);
+  text-decoration: underli
 
