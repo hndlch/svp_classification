@@ -61,117 +61,73 @@
     </div>
   </div>
 </section>
-
+<!-- ===================== MODEL & TRAINING ===================== -->
 <section class="section">
   <div class="container is-max-desktop">
-<h2 class="title is-3 has-text-centered">Model and Training</h2>
+    <h2 class="title is-2 has-text-centered section-title">Model and Training</h2>
 
+    <div class="box section-box">
 
-    <div style="margin-top: 3rem;"></div>
+      <!-- Task Overview -->
+      <h3 class="title is-4 has-text-centered subblock-title">Task Overview</h3>
+      <div class="content has-text-justified readable-content">
+        <p>
+          We train a deep learning classifier to predict ten protein particle categories (mAb1–mAb10) from FIM images.
+          To address high inter-class similarity, the dataset is split into train/validation/test sets and trained with dynamic augmentations designed to promote generalizable feature learning.
+        </p>
+        <p>
+          Model selection is based on macro-averaged F1, precision, and recall, and is complemented by class-wise analysis.
+          This combination ensures that the chosen configuration performs consistently across classes rather than being dominated by a small subset of easier categories.
+        </p>
+      </div>
 
-    <!-- Task Overview -->
-    <div class="content has-text-justified readable-content">
-      <h3 class="title is-4">Task Overview</h3>
+      <hr class="soft-divider">
 
-      <div style="margin-top: 1.5rem;"></div>
+      <!-- Optimization -->
+      <h3 class="title is-4 has-text-centered subblock-title">Optimization</h3>
+      <div class="content has-text-justified readable-content">
+        <p>
+          We evaluated ~15 experimental configurations by varying normalization, transformation pipelines, and training settings.
+          Instead of optimizing for a single global metric, we prioritized configurations that improved class-wise stability and reduced systematic confusions between visually similar particles.
+        </p>
+        <p>
+          The best-performing setup showed consistently strong behavior across evaluation criteria despite the intrinsic similarity of protein particle morphology.
+          Its advantage appears to come from exposing the model to controlled spatial diversity (e.g., variations in size and orientation), which encourages more transferable visual representations.
+        </p>
 
-      <p>
-        This task focuses on optimizing a deep learning model for classifying protein particles into ten categories (mAb1–mAb10) by analyzing approximately 15 experimental sets with varying normalization and transformation protocols. To address the inherent challenge of high inter-class similarity, the dataset was rigorously partitioned and trained using dynamic augmentations to ensure robust feature extraction and generalization. Performance is evaluated through macro-averaged F1-score, precision, and recall, while heatmaps are utilized to visually confirm that the model identifies the correct morphological characteristics for classification.
-      </p>
-    </div>
+        <div style="margin-top: 2.0rem;"></div>
 
-    <div style="margin-top: 3.5rem;"></div>
+        <figure class="image has-text-centered">
+          <img src="./static/images/heatmap.png"
+               alt="Class-wise model response heatmap"
+               style="width: 70%; height: auto;">
+          <figcaption class="figure-caption">
+            <span class="caption-label">Figure 1.</span>
+            Class-wise correct classification rates (mAb1–mAb10) on the best test run.
+          </figcaption>
+        </figure>
+      </div>
 
-    <!-- Optimization Section -->
-    <div class="content has-text-justified readable-content">
+      <hr class="soft-divider">
 
-      <h4 class="title is-5">
-        Optimization of Model Configuration for Protein Particle Classification
-      </h4>
-
-      <div style="margin-top: 1.5rem;"></div>
-
-      <p>
-        To identify an effective configuration for protein particle classification,
-        we conducted a comprehensive evaluation of approximately fifteen distinct experimental setups.
-        Each setup was carefully designed by varying image normalization strategies,
-        transformation pipelines, and training configurations in order to isolate
-        the impact of individual design choices.
-      </p>
-
-      <p>
-        Rather than relying solely on global performance averages,
-        the selection process was guided by a holistic analysis of class-wise behavior.
-        Classification performance was examined independently for each antibody class
-        (mAb1 through mAb10), allowing us to compare relative trends in confidence,
-        stability, and consistency across configurations.
-      </p>
-
-      <p>
-        The most effective configuration demonstrated consistently strong behavior
-        across all major evaluation criteria.
-        This outcome is particularly notable given the intrinsic inter-class similarity
-        of protein particles.
-        The success of this configuration is primarily attributed to a training strategy
-        that emphasized spatial diversity through variations in image size and orientation.
-      </p>
-
-      <p>
-        By exposing the model to these controlled spatial transformations,
-        the training process encouraged the development of more generalized feature representations,
-        enabling reliable classification across diverse particle morphologies.
-        The resulting focus of the model is further illustrated through qualitative visualization,
-        such as class-wise heatmaps.
-      </p>
-
-<div style="margin-top: 2.5rem;"></div>
-
-<figure class="image has-text-centered">
-  <img src="./static/images/heatmap.png"
-       alt="Class-wise model response heatmap"
-       style="width: 70%; height: auto;">
-
-  <figcaption class="is-size-6 has-text-grey" style="margin-top: 0.75rem;">
-    Figure 1. This heatmap illustrates the percentages of correct classifications for the ten protein particle classes (mAb1–mAb10) achieved in the best test set.
-  </figcaption>
-</figure>
-
+      <!-- Key Observations -->
+      <h3 class="title is-4 has-text-centered subblock-title">Key Observations</h3>
+      <div class="content has-text-justified readable-content">
+        <p>
+          Across most configurations, we observe a consistent hierarchy in class difficulty:
+          some particles remain stable and separable, while others show recurring confusions even when the pipeline changes.
+          This indicates that difficulty is not uniformly distributed and that a subset of classes may require targeted strategies rather than generic tuning.
+        </p>
+        <p>
+          In particular, configurations that combine resizing-based spatial diversity with background/appearance controls tend to improve stability.
+          These trends suggest the model benefits from learning invariant cues rather than overfitting to orientation- or scale-specific shortcuts.
+        </p>
+      </div>
 
     </div>
+  </div>
+</section>
 
-    <div style="margin-top: 2.5rem;"></div>
-
-    <!-- Key Observations -->
-    <div class="content has-text-justified readable-content">
-      <h4 class="title is-5">Key Observations from Model Evaluation</h4>
-
-      <div style="margin-top: 1.5rem;"></div>
-
-      <p>
-        Analysis of the best-performing configuration revealed a consistent hierarchy
-        in class-level behavior.
-        Certain antibody classes demonstrated comparatively stronger and more stable responses,
-        while others repeatedly exhibited weaker performance trends.
-        This pattern was observed not only in the optimal configuration,
-        but also as a general tendency across the majority of experimental setups.
-      </p>
-
-      <p>
-        These observations suggest that model difficulty is not uniformly distributed across classes.
-        Instead, specific antibody categories present persistent challenges that are
-        resistant to changes in training configuration.
-        Such consistency highlights the importance of class-aware analysis
-        when evaluating model behavior.
-      </p>
-
-      <p>
-        The effectiveness of the strongest configuration can be largely attributed
-        to its preprocessing pipeline, which combined random resizing,
-        background unification, and orientation perturbations.
-        These factors appear to play a decisive role in guiding the model
-        toward learning discriminative and transferable visual features.
-      </p>
-    </div>
 
     <div style="margin-top: 4.0rem;"></div>
 
