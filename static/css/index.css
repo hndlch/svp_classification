@@ -182,3 +182,65 @@ figcaption {
   margin-left: auto;      /* optional: center the image horizontally */
   margin-right: auto;     /* optional: center the image horizontally */
 }
+
+
+/* =========================
+   Add these to ./static/css/index.css
+   ========================= */
+
+/* Section title consistency */
+.section-title {
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+/* Big grouped blocks */
+.section-box {
+  padding: 2rem 2rem;
+  border-radius: 14px;
+}
+
+/* Sub-block titles */
+.subblock-title {
+  margin-bottom: 1rem;
+}
+
+/* Softer dividers */
+.soft-divider {
+  margin: 2rem 0;
+  background-color: rgba(10, 10, 10, 0.08);
+  height: 1px;
+  border: none;
+}
+
+/* Figure caption typography */
+.figure-caption {
+  margin: 0.9rem auto 0;
+  max-width: 760px;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgba(10, 10, 10, 0.65);
+  font-weight: 500;
+}
+
+.figure-caption .caption-label {
+  color: rgba(10, 10, 10, 0.85);
+  font-weight: 700;
+  margin-right: 0.25rem;
+}
+
+/* Particle Insights table styling */
+.insights-table th {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.insights-table td {
+  vertical-align: top;
+}
+
+.table-container {
+  margin-top: 1rem;
+}
+
